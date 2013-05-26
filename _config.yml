@@ -1,3 +1,4 @@
 timezone: Asia/Shanghai
 exclude: ['./file', './static']
 permalink: /article/:year-:month-:day/:title.html
+paginate: 7
