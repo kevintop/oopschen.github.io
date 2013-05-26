@@ -2,7 +2,9 @@
 title: hello index
 ---
 hello
-{% page.title %}
+<html>
+  <body>
+{ page.title }
 <ul>
     {% for post in site.posts %}
         <li>
@@ -10,3 +12,5 @@ hello
                   </li>
                     {% endfor %}
                   </ul>
+                </body>
+                </html>
