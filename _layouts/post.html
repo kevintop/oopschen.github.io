@@ -1,8 +1,12 @@
 {% include header.html %}
 <section>
-  <h3>{{ page.title }}</h3>
-  {{ content }}
+<h3>{{ page.title }}</h3>
+{{ content }}
 
-  <p><a href="{{site.url}}/index.html">&lt;&lt;&lt;</a></p>
+<p><a href="{{site.url}}/index.html">&lt;&lt;&lt;</a></p>
 </section>
-{% include footer.html %}
+
+<section id="disqus_thread"></section>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+{% include footer_comment.html %}
