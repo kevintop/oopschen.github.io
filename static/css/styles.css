@@ -417,3 +417,7 @@ footer img {
     color:#444;
   }
 }
+
+.nounderline, .nounderline:hover {
+  text-decoration:none;
+}
