@@ -4,13 +4,10 @@ title: Mr. C Profile
 ---
 <section>
 <h3>Mr. C Profile</h3>
-<p>
-{%raw%}
-<pre>
-<code>
-#include &lt;stdio.h&gt;
-#include &lt;stdint.h&gt;
-#include &lt;stdlib.h&gt;
+{% highlight c %}
+#include <stdio.h>
+#include <stdint.h>
+#include <stdlib.h>
 
 #define CHINA_PROVINCE_ZHEJIANG 0x1
 #define SEX_MALE 0x1
@@ -26,7 +23,7 @@ struct Mr_c {
 };
 
 /**
- * <strong>It is up to you to implement.</strong>
+ * It is up to you to implement.
  */
 static uint8_t hire(struct Mr_c * employee);
 
@@ -57,8 +54,5 @@ int main() {
 
   return hire(&me);
 }
-</code>
-</pre>
-{%endraw%}
-</p>
+{% endhighlight %}
 </section>
