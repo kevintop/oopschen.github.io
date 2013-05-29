@@ -9,18 +9,20 @@ title: 博客存档
 {% for p in site.posts | sort: date %}
   {% assign num = 1 %}
   {% capture fd %}{{ p.date | date : "%Y"}}{% endcapture %}
+
   {% if 0 == isfirst %}
     <section>
       <h3>{{ p.date | date: "%Y年"}}</h3>
       <ul>
     {% assign isfirst = 1 %}
+    {% assign prev = fd  %}
   {% else %}
     {% if prev != fd %}
       </ul></section>
       <section>
       <h3>{{ p.date | date: "%Y年"}}</h3>
       <ul>
-      {% assign prev = fd %}
+      {% assign prev = fd  %}
     {% endif %}
   {% endif %}
   <li><a href="{{p.url}}">{{p.title}}</a></li>
