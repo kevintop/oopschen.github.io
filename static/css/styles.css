@@ -325,6 +325,12 @@ footer {
 	padding-left: 50px;
 }
 
+footer img {
+  border:0;
+  padding:0;
+  margin:0;
+}
+
 @media print, screen and (max-width: 960px) {
 
   div.wrapper {
