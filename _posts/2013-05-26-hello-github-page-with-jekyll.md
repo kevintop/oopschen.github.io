@@ -11,8 +11,7 @@ date: 2013-05-26 18:00:00
 
 作为一个80后准软件工程专业毕业的程序员，身处在软件行业成指数型发展的大环境下，人难免会有些轻浮。各种的框架，各种的技术博客，各种开源的代码以及各种好用的IDE都让我们开始迷失在茫茫的码海里。为了不继续迷失下去，我们必须知道从哪里来，才能知道到哪里去。因此，我的工作台也从win转向linux，从eclipse转向vim，变成语言也从Java扩展到c90，c89，python以及cortex指令集等。就这么不知不觉过了好几年，这确实带给我不少好处，了解了不少软件行业的历史，渐渐对以前的程序员所处的环境感同身受，才会发现现在的程序员真是太幸福了，同时也太嫩了。  
   
-为什么要迁移到jekyll
-====
+#### 为什么要迁移到jekyll
 扯着扯着跑题了，因为太喜欢vim的简单，快速，敏捷，以致于对鼠标开始感到陌生。2012年的时候有些想法想要找到一个免费的，用vim写博客的服务。但始终没能如愿。2013年偶然间看到github上出了个pages的服务，我不的惊呼这不是我在找的东西么。
   
 1. 免费的博客服务
@@ -20,8 +19,7 @@ date: 2013-05-26 18:00:00
 3. 可以利用vim写博客
 4. 不用高配的服务器挂博客，因为没有数据库，只有html文件
   
-jekyll
-====
+#### jekyll
 jekyll是ruby写的静态化工具，它由以下几部分组成:  
 1. liquid模板指令
 2. ruby plugins实现定制
@@ -39,8 +37,7 @@ assign的写法是为了赋值一个常量，而capture的写法是赋值变量�
 [jeyll的官方网站][jekyllwebsite]
 [liquid的文档][liquidapi]
 
-Github Pages
-====
+#### Github Pages
 Github Pages是github推出的一个网页的服务。通常github上的代码有一个**Readme**来作为代码的简介，但是这样少了很多亮丽的元素--比如说图片，html5支持。所以Pages的服务类似于对一个项目的宣传页，它允许用户在repository上建立一个gh-pages的分支作为该repository的宣传页。同时，它也支持这个repository单单作为一个网站使用。这里要注意的是想要做为单纯的网站，必须符合两个条件：  
 1. repository的名称必须是*username\.github\.io*, username是github页上的username
 2. 一个帐号只能建立一个网站
@@ -49,8 +46,7 @@ Github Pages是github推出的一个网页的服务。通常github上的代码�
   
 这里要提醒大家，这个Github Pages上的所有内容都是可以通过github中的repository页面访问，所以请不要放一些私隐的东东。
   
-迁移过程
-====
+#### 迁移过程
 首先我们建立如下几个目录:  
 1. \_layouts， mvc模式中v的职责
 2. \_posts，博客内容，文件名称的格式必须是yyyy-mm-dd-blogtitle\.format, format可以是md，html等，具体查看文档 
@@ -59,7 +55,6 @@ Github Pages是github推出的一个网页的服务。通常github上的代码�
 \_config.yml负责这些目录的可配化，具体参考[文档][jekyllwebsite]  
 由于现在jekyll使用的主题很少，爱美的博主可以去拷贝一些html模板，然后分别拆分放在这些目录下，或者使用[jekyllbootstrap][jekyllbootstrap]或者Octopress[octopress]来下载模板和初始化jekyll。  
   
-问题概要
-====
+#### 问题概要
 1. jekyll缺少稳定的插件支持，虽然能在网上搜索到很多插件的源码，但是都不太好用。比如相关文章插件，分类插件等等。
 2. jekyly的速度是一个很大的问题，如果能支持增量生成就好了。
