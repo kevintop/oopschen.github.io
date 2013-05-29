@@ -6,10 +6,12 @@ title: 主页
 {% for p in site.posts | sort: date | limit: 20 %}
   <h3>{{ p.title }}</h3>
 
-  <p>{{ p.content | strip_html | truncatewords: 600 }}</p>
-
-  <div>
-    <a href="{{p.url}}">&gt;&gt;&gt;</a>
-  </div>
+  <p>
+    {{ p.content | strip_html | truncate: 170 | newline_to_br}}
+    <p>
+      <a href="{{p.url}}">goto more;</a>
+    </p>
+  </p>
+  
 {% endfor %}
 </section>
