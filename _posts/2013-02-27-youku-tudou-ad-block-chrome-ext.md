@@ -3,6 +3,7 @@ layout: post
 title: 优酷，土豆，乐视，搜狐tv，腾讯视频广告屏蔽chome插件
 tags: 优酷，土豆，乐视，搜狐tv，腾讯视频, 广告屏蔽, chome插件
 date: 2013-02-27 13:56:00
+category: 个人作品
 ---
 [download]: http://tmall.freehost.im/dd/fuckad.crx "点击下载插件" 
 
