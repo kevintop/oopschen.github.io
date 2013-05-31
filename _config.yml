@@ -1,4 +1,4 @@
 timezone: Asia/Shanghai
-exclude: ['./file', './static']
+exclude: ['./file', './static', './javascripts', './stylesheets', './images']
 permalink: /article/:year-:month-:day/:title.html
 paginate: 10
