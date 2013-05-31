@@ -3,14 +3,12 @@ layout: blank
 title: 主页
 ---
 <section>
-{% for p in site.posts | sort: date | limit: 20 %}
+{% for p in site.posts | sort: date | limit: 7 %}
   <h3>{{ p.title }}</h3>
 
   <p>
-    {{ p.content | strip_html | truncate: 170 | newline_to_br}}
-    <p>
-      <a href="{{p.url}}">goto more;</a>
-    </p>
+    {{ p.content | strip_html | truncatewords: 8| newline_to_br}}
+      <a href="{{p.url}}" style="margin:0 17px auto;">goto more;</a>
   </p>
   
 {% endfor %}
