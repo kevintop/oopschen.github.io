@@ -4,7 +4,7 @@
 
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
+a, abbr, acronym, address, big, cite, 
 del, dfn, em, img, ins, kbd, q, s, samp,
 small, strike, strong, sub, sup, tt, var,
 b, u, i, center,
@@ -152,16 +152,10 @@ img {
 
 /* Code blocks */
 
-code, pre {
-	font-family: Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, monospace;
-  color:#000;
-  font-size:14px;
-}
 
 pre {
 	padding: 4px 12px;
-  background: #FDFEFB;
-  border-radius:4px;
+  border-radius:8px;
   border:1px solid #D7D8C8;
   overflow: auto;
   overflow-y: hidden;

@@ -8,7 +8,9 @@ title: 主页
 
   <p>
     {{ p.content | strip_html | truncatewords: 8| newline_to_br}}
-      <a href="{{p.url}}" style="margin:0 17px auto;">goto more;</a>
+  </p>
+  <p>
+      <a href="{{p.url}}">goto more;</a>
   </p>
   
 {% endfor %}
