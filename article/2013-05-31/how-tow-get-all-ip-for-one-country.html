@@ -131,7 +131,7 @@
 
 <p>上面我们介绍了如何去获得指定ip段，但是这些ip段又会再分配给不同的运营商使用，比如电信，联通，移动以及各高校的固定ip。这些情形APNIC是不会知道的，也不关心，那么我们如何去解析呢？</p>
 
-<p>这个时候我们需要用到whois, whois主要是查询RFC3921<a href='http://www.ietf.org/rfc/rfc3912.txt' title='RFC 3921'>rfc3921</a>中的对象，whosi通过建立tcp链接，遵循request和response的设计，以文本的格式传递信息，当然只允许ASCII。但是我查了很久，没有一个标准的whois协议，可能是各个办事处自己定制的。啥历史原因就不得而知了。<br />下面是一个whois 1.0.1.0的例子:</p>
+<p>这个时候我们需要用到whois, whois主要是查询<a href='http://www.ietf.org/rfc/rfc3912.txt' title='RFC 3921'>RFC3921</a>中的对象，whosi通过建立tcp链接，遵循request和response的设计，以文本的格式传递信息，当然只允许ASCII。但是我查了很久，没有一个标准的whois协议，可能是各个办事处自己定制的。啥历史原因就不得而知了。<br />下面是一个whois 1.0.1.0的例子:</p>
 
 <blockquote>
 <p>% [whois.apnic.net node-1]<br />% Whois data copyright terms http://www.apnic.net/db/dbcopyright.html</p>
