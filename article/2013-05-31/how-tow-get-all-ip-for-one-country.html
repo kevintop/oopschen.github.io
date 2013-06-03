@@ -24,18 +24,22 @@
 
 <section>
 <h3>如何获取某个国家的ip段分配，以及ip所对应的服务商</h3>
-<div class="postdate">Updated @2013-05-31 16:45, Written @2013-05-31 16:45</div>
+
+
+
+  <div class="postdate">Written 2013-05-31 16:45</div>
+
 <p>互联网在最初的时候只是一个局域网，各个州的局域网连接起来后就变成了当今的局域网。所谓ip，就是分配给每个上网设备的一个地址，像邮箱一样。而这个工作不可能由一个组织具体到每个设备，这样既消耗资源，又不高效。因此，一个名为<a href='http://www.iana.org/' title='IANA Website'>IANA</a>,的组织负责统筹安排数字的分配（包含ip地址，端口地址，域名等等），当然具体执行的时候，会分配到各个州的办事处。而亚洲的办事处称为<a href='http://www.apnic.net/' title='APNIC Website'>APNIC</a>。说了这么多，好像没说重点，这篇博客主要记录如何获取某个国家的ip段，以及如何过滤出某些运营商的ip段。</p>
 
 <h4 id='ip'>获取某个国家的ip段</h4>
 
 <p>在这之前，我们先了解下什么是<strong>Country Code(CC)</strong>, CC是国家代码的简称。我们通常可以在域名后看到，比如<em>www.google.com.hk</em>就代表google在香港的服务，而<em>wwww.google.com.sg</em>则是新加坡的服务，后面我们将用他来过滤ip段。<a href='http://www.iso.org/iso/home/standards/country_codes/iso-3166-1_decoding_table.htm' title='ISO-3166 Country Code'>更多的CC可以参考这里</a><br />Apnic负责亚洲地区的ip分配，而所有ip信息是公开的，具体参考文件<a href='http://ftp.apnic.net/apnic/stats/apnic/delegated-apnic-latest' title='APNIC Latest IP'>Lastes IP Allocation</a>, 下面我们简单介绍下apnic的的<a href='http://www.apnic.net/publications/media-library/documents/resource-guidelines/rir-statistics-exchange-format#Format' title='APNIC IP ALLOC FORMAT'>格式</a>：</p>
 
-<h6 id='id3'>备注行</h6>
+<h6 id='id9'>备注行</h6>
 
 <p><strong>#</strong>在文件中表示备注，可以正常忽略，当然也有一些有用的信息,比如文档地址在哪里等</p>
 
-<h5 id='id4'>文件头行</h5>
+<h5 id='id10'>文件头行</h5>
 
 <p>样例：</p>
 
@@ -65,7 +69,7 @@
 <li>UTCoffset, UTC中的距离</li>
 </ol>
 
-<h5 id='id5'>概要行</h5>
+<h5 id='id11'>概要行</h5>
 
 <p>样例：</p>
 
@@ -89,7 +93,7 @@
 <li>summary, 就是字符串&#8221;summary&#8221;, 为了和记录行区别</li>
 </ol>
 
-<h5 id='id6'>记录行</h5>
+<h5 id='id12'>记录行</h5>
 
 <p>样例：</p>
 
@@ -139,7 +143,7 @@
 
 <p>从上面我们不难看出是电信福建(CHINANET-FJ)的网络.</p>
 
-<h4 id='id7'>脚本</h4>
+<h4 id='id13'>脚本</h4>
 
 <h5 id='ippython'>获取ip段python脚本</h5>
 <div class='highlight'><pre><code class='python'><span class='c'>#!/usr/bin/env python</span>
