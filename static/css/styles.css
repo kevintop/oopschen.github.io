@@ -415,7 +415,10 @@ footer img {
 .nounderline, .nounderline:hover {
   text-decoration:none;
 }
-.truncate_repl {font-size:22px;}
+.truncate_repl {
+  font-weight:bold;
+  letter-spacing: 4px;
+}
 section * {
   letter-spacing: 2px;
 }
