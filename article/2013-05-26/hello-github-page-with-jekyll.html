@@ -1,0 +1,112 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>博客迁移到github-Mr. C</title>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="description" content=";github,jekyll,tutorial,部署博客,迁移到jekyll">
+    <meta name="revisit-after" content="7 days">
+    <link rel="stylesheet" href="/static/css/all.css">
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+      <h1 class="header"><a href="/index.html" class="nounderline">Mr. C</a></h1>
+        <p class="header">int main = 0;(Ooo0ps?)</p>
+
+        <ul>
+          <li><a class="buttons github" href="https://github.com/oopschen">GitHub Page</a></li>
+          <li><a class="buttons github" href="/about.html">About</a></li>
+          <li><a class="buttons github" href="/archive.html">Archive</a></li>
+        </ul>
+      </header>
+
+<section>
+<h3>博客迁移到github</h3>
+<p>2013-05-26 18:00</p>
+<p>作为一个80后准软件工程专业毕业的程序员，身处在软件行业成指数型发展的大环境下，人难免会有些轻浮。各种的框架，各种的技术博客，各种开源的代码以及各种好用的IDE都让我们开始迷失在茫茫的码海里。为了不继续迷失下去，我们必须知道从哪里来，才能知道到哪里去。因此，我的工作台也从win转向linux，从eclipse转向vim，变成语言也从Java扩展到c90，c89，python以及cortex指令集等。就这么不知不觉过了好几年，这确实带给我不少好处，了解了不少软件行业的历史，渐渐对以前的程序员所处的环境感同身受，才会发现现在的程序员真是太幸福了，同时也太嫩了。</p>
+
+<h4 id='jekyll'>为什么要迁移到jekyll</h4>
+
+<p>扯着扯着跑题了，因为太喜欢vim的简单，快速，敏捷，以致于对鼠标开始感到陌生。2012年的时候有些想法想要找到一个免费的，用vim写博客的服务。但始终没能如愿。2013年偶然间看到github上出了个pages的服务，我不的惊呼这不是我在找的东西么。</p>
+
+<p>1. 免费的博客服务</p>
+
+<ol>
+<li>使用git保存博客</li>
+
+<li>可以利用vim写博客</li>
+
+<li>不用高配的服务器挂博客，因为没有数据库，只有html文件</li>
+</ol>
+
+<h4 id='jekyll'>jekyll</h4>
+
+<p>jekyll是ruby写的静态化工具，它由以下几部分组成:</p>
+
+<ol>
+<li>liquid模板指令</li>
+
+<li>ruby plugins实现定制</li>
+</ol>
+
+<p>jekyll具有博客的天生气质，他将文件分成配置文件，posts文件（不知道怎么翻译合适，意思是每篇博客）以及不需要处理的文件（图片，样式，脚本等）。jekyll通过配置文件将posts文件按照规则生成html文件，而在这个过程中，用户可以定制不同的插件来生成不同的html文件，从而实现整站静态化。但是，个人觉得用ruby实现真是一个败笔: 在使用一个星期后，当文档越多，jekyll处理的非常缓慢。文档的缺失也让这个工具不是那么好用。相比较wordpress而言，jekyll所拥有的主题也少的可能，不过这可以通过一些html模板来弥补。</p>
+
+<p>Liquid, 本是液体的意思，大概作者是希望他能想液体一样胶合设计者和代码。个人使用后，他并没有达到预期的想法。就单单赋值这块而言，它居然有两种写法。</p>
+
+<pre><code>{% assign var = 1 %}
+{% capture %}{{ page.title }}{% endcapture %}</code></pre>
+
+<p>assign的写法是为了赋值一个常量，而capture的写法是赋值变量，这让程序员情何以堪。而且，错误提示信息不够，很难判断到底哪里出错了。</p>
+
+<p><strong>下面列举一些可参考的文档</strong> <a href='http://jekyllrb.com/docs/home/' title='Jekyll website'>jeyll的官方网站</a> <a href='https://github.com/Shopify/liquid/wiki' title='Liquid DOC'>liquid的文档</a></p>
+
+<h4 id='github_pages'>Github Pages</h4>
+
+<p>Github Pages是github推出的一个网页的服务。通常github上的代码有一个<strong>Readme</strong>来作为代码的简介，但是这样少了很多亮丽的元素&#8211;比如说图片，html5支持。所以Pages的服务类似于对一个项目的宣传页，它允许用户在repository上建立一个gh-pages的分支作为该repository的宣传页。同时，它也支持这个repository单单作为一个网站使用。这里要注意的是想要做为单纯的网站，必须符合两个条件：<br />1. repository的名称必须是<em>username.github.io</em>, username是github页上的username 2. 一个帐号只能建立一个网站</p>
+
+<p>同样，Github Pages有一个缺点，它不能实时发布，因为jekyll每次重新生成所有页面，所消耗的cpu是很大的，所以每次我们push博客到github repository，它都需要10分钟的时间来进行发布。这可能也是出于对服务器资源的保护，毕竟是免费的。</p>
+
+<p>这里要提醒大家，这个Github Pages上的所有内容都是可以通过github中的repository页面访问，所以请不要放一些私隐的东东。</p>
+
+<h4 id='id7'>迁移过程</h4>
+
+<p>首先我们建立如下几个目录:</p>
+
+<ol>
+<li>_layouts， mvc模式中v的职责</li>
+
+<li>_posts，博客内容，文件名称的格式必须是yyyy-mm-dd-blogtitle.format, format可以是md，html等，具体查看文档</li>
+
+<li>_includes, 常量文件，_layouts，_posts和目录下的所有文件可以使用<strong>{% include filename %}</strong>引用此文件</li>
+</ol>
+
+<p>_config.yml负责这些目录的可配化，具体参考<a href='http://jekyllrb.com/docs/home/' title='Jekyll website'>文档</a><br />由于现在jekyll使用的主题很少，爱美的博主可以去拷贝一些html模板，然后分别拆分放在这些目录下，或者使用<a href='http://jekyllbootstrap.com/' title='Jekyll Bootstrap'>jekyllbootstrap</a>或者<a href='http://octopress.org/' title='Octopress'>Octopress</a>来下载模板和初始化jekyll。</p>
+
+<h4 id='id8'>问题概要</h4>
+
+<ol>
+<li>jekyll缺少稳定的插件支持，虽然能在网上搜索到很多插件的源码，但是都不太好用。比如相关文章插件，分类插件等等。</li>
+
+<li>jekyly的速度是一个很大的问题，如果能支持增量生成就好了。</li>
+</ol>
+</section>
+
+<section id="disqus_thread"></section>
+
+      <footer>
+        <p><small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme modified by Mr. C</small></p>
+      </footer>
+    </div>
+  </body>
+
+  <!--[if lt IE 9]>
+  <script src="/static/js/html5.js"></script>
+<![endif]-->
+<script src="/static/js/scale.fix-min.js"></script>
+<!--[if !IE]><script>fixScale(document);</script><![endif]-->
+
+  <script type="text/javascript"> var disqus_shortname = 'sangeshitou'; (function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true; dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js'; (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq); })(); </script> 
+</html>
+
