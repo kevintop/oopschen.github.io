@@ -34,7 +34,8 @@ int main() {
   me.born_year = 1988;
 
   me.ever_worked_companies_len = 2;
-  if (!(me.ever_worked_companies = calloc(me.ever_worked_companies_len, sizeof(*(me.ever_worked_companies))))) {
+  if (!(me.ever_worked_companies = 
+        calloc(me.ever_worked_companies_len, sizeof(*(me.ever_worked_companies))))) {
     perror("Out of Memory!");
     return 1;
   }

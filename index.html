@@ -7,10 +7,8 @@ title: 主页
   <h3>{{ p.title }}</h3>
 
   <p>
-    {{ p.content | strip_html | truncatewords: 8| newline_to_br}}
-  </p>
-  <p>
-      <a href="{{p.url}}">goto more;</a>
+    {{ p.content | strip_html | truncateline: 7, "" | newline_to_br}}
+    <a class="truncate_repl" href="{{p.url}}">......</a>
   </p>
   
 {% endfor %}
