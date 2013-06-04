@@ -24,6 +24,21 @@
 
 <section>
 
+  <h3>Linux下的Ramdisk使用</h3>
+
+  <p>
+    内存技术日益发展的今天，一台电脑随随便便都有8g以上的内存，然后win系统只占了1.5G，linux也就200M，所以大部分的内存资源都是浪费的。因为大部分的软件都考虑了内存不足的情况，会把一些不必要的数据存在硬盘上，而这样小的读写对硬盘的寿命都是有害的，而且容易造成碎片，同时速度也不快。那么我们为什么不把这些临时文件存在内存里呢？这时，linux内核自带的ramdisk就非常好用。<br />
+<br />
+使用<br />
+<br />
+下面我们来看下如何在linux下使用ramdisk：<br />
+mount -t tmpfs -o size=xxm,uid=xx,gid=xx tmpfs /xxx/xx<br />
+<br />
+
+    <br/><a class="truncate_repl" href="/article/2013-06-04/linux-ramdisk-usage.html">阅读全文</a>
+  </p>
+  
+
   <h3>如何获取某个国家的ip段分配，以及ip所对应的服务商</h3>
 
   <p>

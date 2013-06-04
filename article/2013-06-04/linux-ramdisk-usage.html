@@ -1,0 +1,107 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Linux下的Ramdisk使用-Mr. C</title>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="description" content=";linux,ramdisk,tmpfs,ramfs,setcap,capability">
+    <meta name="revisit-after" content="7 days">
+    <link rel="stylesheet" href="/static/css/all.css">
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+      <h1 class="header"><a href="/index.html" class="nounderline">Mr. C</a></h1>
+        <p class="header">int main = 0;(Ooo0ps?)</p>
+
+        <ul>
+          <li><a class="buttons github" href="https://github.com/oopschen">GitHub Page</a></li>
+          <li><a class="buttons github" href="/about.html">About</a></li>
+          <li><a class="buttons github" href="/archive.html">Archive</a></li>
+        </ul>
+      </header>
+
+<section>
+<h3>Linux下的Ramdisk使用</h3>
+
+
+
+  <div class="postdate">Written 2013-06-04 09:51</div>
+
+<p>内存技术日益发展的今天，一台电脑随随便便都有8g以上的内存，然后win系统只占了1.5G，linux也就200M，所以大部分的内存资源都是浪费的。因为大部分的软件都考虑了内存不足的情况，会把一些不必要的数据存在硬盘上，而这样小的读写对硬盘的寿命都是有害的，而且容易造成碎片，同时速度也不快。那么我们为什么不把这些临时文件存在内存里呢？这时，linux内核自带的ramdisk就非常好用。</p>
+
+<h5 id='id14'>使用</h5>
+
+<p>下面我们来看下如何在linux下使用ramdisk：</p>
+<div class='highlight'><pre><code class='bash'>mount -t tmpfs -o <span class='nv'>size</span><span class='o'>=</span>xxm,uid<span class='o'>=</span>xx,gid<span class='o'>=</span>xx tmpfs /xxx/xx
+</code></pre></div>
+<p>我们也可以将其配置在<strong>/etc/fstab</strong>下：</p>
+
+<blockquote>
+<p>tmpfs /xxx/xxx tmpfs defaults,size=xxm,uid=xx,gid=xx 0 2</p>
+</blockquote>
+
+<p>如果想使用ramfs则把上面的tmpfs替换成ramfs</p>
+
+<h5 id='ramfstmpfs'>ramfs和tmpfs区别</h5>
+<table>
+  <tr>
+    <td />
+    <td>Ramfs</td>
+    <td>Tmpfs</td>
+  </tr>
+
+  <tr>
+    <td>内存不是一下子获取，而是慢慢增长</td>
+    <td>y</td>
+    <td>y</td>
+  </tr>
+
+  <tr>
+    <td>内存不足</td>
+    <td>死机</td>
+    <td>使用swap</td>
+  </tr>
+
+  <tr>
+    <td>内核版本支持</td>
+    <td>2.0</td>
+    <td>2.4</td>
+  </tr>
+
+  <tr>
+    <td>参数</td>
+    <td>无，只能是root用户使用</td>
+    <td>可以控制uid,gid,size，以及挂在的node绑定</td>
+  </tr>
+</table>
+<p>所以建议大家使用tmpfs</p>
+
+<h5 id='setcap'>setcap</h5>
+
+<p>经在centos 6.4上测试，setcap无法在tmpfs的文件上执行，错误信息是<strong>Operation not support</strong>。查找相关资料后，redhat应该在11年的时候就修复了，不知道为啥centos上还是出问题，具体<a href='https://bugzilla.redhat.com/show_bug.cgi?id=648653' title='Setcap 无法使用在tmpfs文件上bug'>bug链接</a>。同样ramfs也是使用，其他linux发行版未测试。</p>
+
+<h5 id='id15'>综述</h5>
+
+<p>ramdisk并不是万能的解药，他只适合用于加速磁盘读写频繁的应用，而且断电后ramdisk上的数据全部丢失。所以可以用它来当eclipse或chrome的工作目录。</p>
+</section>
+
+<section id="disqus_thread"></section>
+
+      <footer>
+        <p><small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme modified by Mr. C</small></p>
+      </footer>
+    </div>
+    <!--[if lt IE 9]>
+  <script src="/static/js/html5.js"></script>
+<![endif]-->
+<script src="/static/js/scale.fix-min.js"></script>
+<!--[if !IE]><script>fixScale(document);</script><![endif]-->
+<script type="text/javascript">var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fb92e3fa3521db5146fa7ee476d69fa7f' type='text/javascript'%3E%3C/script%3E"));</script>
+
+<script type="text/javascript"> var disqus_shortname = 'sangeshitou'; (function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true; dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js'; (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq); })(); </script> 
+
+  </body>
+</html>
+
